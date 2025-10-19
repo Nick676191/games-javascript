@@ -19,6 +19,16 @@
                 return "scissors"
             }
         }
+
+        // writing code to get the human's choice
+        function getHumanChoice() {
+            let choice = prompt("Rock, Paper, or Scissors?")
+            if (choice === null) {
+                alert("You must choose one of the options")
+            } else {
+                return choice
+            }
+        }
     </script>
 </body>
 </html>
