@@ -7,7 +7,18 @@
 </head>
 <body>
     <script>
-        
+        // writing code to get the computer's choice for rock-paper-scissors
+        let getComputerChoice = function() {
+            // creating a random number between 0-2
+            let rand = Math.floor(Math.random() * 3)
+            if (rand === 0) {
+                return "rock"
+            } else if (rand === 1) {
+                return "paper"
+            } else {
+                return "scissors"
+            }
+        }
     </script>
 </body>
 </html>
