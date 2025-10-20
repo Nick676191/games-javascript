@@ -34,7 +34,27 @@
         let humanScore = 0;
         let computerScore = 0;
 
+        // writing a function for a single round of a game
+        function playRound(humanChoice, computerChoice) {
+            const upperHuman = humanChoice.toUpperCase();
+            const upperComputer = computerChoice.toUpperCase(); 
+            if (upperHuman === upperComputer) {
+                console.log("Tie game!");
+            } else if (upperHuman === "ROCK" && upperComputer === "PAPER" || 
+            upperHuman === "PAPER" && upperComputer === "SCISSORS" ||
+            upperHuman === "SCISSORS" && upperComputer === "ROCK") {
+                console.log("The computer has won!");
+                computerScore += 1;
+            } else {
+                console.log("You have won!");
+                humanScore += 1;
+            }
+        }
 
+        // executing the code to play a round of rock paper scissors by inputting each person's choice into the function
+        playRound(getHumanChoice(), getComputerChoice());
+
+        
     </script>
 </body>
 </html>
