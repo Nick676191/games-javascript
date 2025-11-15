@@ -24,6 +24,8 @@
         container.appendChild(btnTwo);
         container.appendChild(btnThree);
 
+        const btns = document.querySelectorAll("button");
+
         // writing code to get the computer's choice for rock-paper-scissors
         let getComputerChoice = function() {
             // creating a random number between 0-2
@@ -47,19 +49,24 @@
         //     }
         // }
 
-        // rewriting the `getHumanChoice` function to work in the event listener for each of the buttons
-        function getHumanChoice(e) {
-            let choice = e.textContent;
-            if (choice === null) {
-                alert("You must choose one of the options")
-            } else {
-                return choice
-            };
-        };
+        // // rewriting the `getHumanChoice` function to work in the event listener for each of the buttons
+        // function getHumanChoice() {
+        //     // targeting the text content of the clicked element
+        //     let choice = btns.forEach((btn) => {
+        //         btn.addEventListener("click", (e) => {
+        //             e.target.textContent;
+        //         });
+        //     });
+        //     if (choice === null) {
+        //         alert("You must choose one of the options")
+        //     } else {
+        //         return choice
+        //     };
+        // };
 
-        // // declaring global variables for the human and computer's respective scores
-        // let humanScore = 0;
-        // let computerScore = 0;
+        // declaring global variables for the human and computer's respective scores
+        let humanScore = 0;
+        let computerScore = 0;
 
         // writing a function for a single round of a game
         function playRound(humanChoice, computerChoice) {
@@ -81,8 +88,6 @@
         // // executing the code to play a round of rock paper scissors by inputting each person's choice into the function
         // playRound(getHumanChoice(), getComputerChoice());
 
-
-
         // // initializing the number of rounds to be played in the game
         // let rounds = 5
 
@@ -103,6 +108,14 @@
 
         // // executing the final function
         // playGame(rounds);
+
+        // going through each button and outputting the round outcome based on the button pressed
+        btns.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                playRound(btn.textContent, getComputerChoice());
+            });
+        });
     </script>
 </body>
 </html>
