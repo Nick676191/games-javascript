@@ -8,24 +8,6 @@
 <body>
     <div></div>
     <script>
-        // creating three buttons for the human's choice in the game
-        const container = document.querySelector("div");
-
-        const btnOne = document.createElement("button");
-        btnOne.textContent = "Rock";
-
-        const btnTwo = document.createElement("button");
-        btnTwo.textContent = "Paper";
-
-        const btnThree = document.createElement("button");
-        btnThree.textContent = "Scissors";
-
-        container.appendChild(btnOne);
-        container.appendChild(btnTwo);
-        container.appendChild(btnThree);
-
-        const btns = document.querySelectorAll("button");
-
         // writing code to get the computer's choice for rock-paper-scissors
         let getComputerChoice = function() {
             // creating a random number between 0-2
@@ -108,6 +90,31 @@
 
         // // executing the final function
         // playGame(rounds);
+
+        // creating three buttons for the human's choice in the game
+        const container = document.querySelector("div");
+
+        const btnOne = document.createElement("button");
+        btnOne.textContent = "Rock";
+        btnOne.style.display = "block";
+
+        const btnTwo = document.createElement("button");
+        btnTwo.textContent = "Paper";
+        btnTwo.style.display = "block";
+
+        const btnThree = document.createElement("button");
+        btnThree.textContent = "Scissors";
+        btnThree.style.display = "block";
+
+        container.appendChild(btnOne);
+        container.appendChild(btnTwo);
+        container.appendChild(btnThree);
+
+        const btns = document.querySelectorAll("button");
+
+        // creating the div container that will hold the scoreboard of the game
+        const scoreboard = document.createElement("div");
+        container.appendChild(scoreboard);
 
         // going through each button and outputting the round outcome based on the button pressed
         btns.forEach((btn) => {
