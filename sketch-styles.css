@@ -20,13 +20,6 @@ body {
     /* background-color: chartreuse; */
 }
 
-/* set each box to take up 6.25% (100/16) of the space of the cotainer they are in */
-.box {
-    width: 6.25%;
-    height: 6.25%;
-    /* background-color: teal; */
-}
-
 /* adding some padding to the button and its container */
 .btn,.btnBox {
     padding: 10px;
