@@ -87,13 +87,13 @@
                 e.preventDefault();
                 playRound(btn.textContent, getComputerChoice());
                 if (humanScore === winningScore) {
-                    roundOutcome.textContent = "You have won the game!"
-                    // delete the buttons once the game has ended
-                    btns.forEach((bt) => bt.remove());
+                    alert("You have won the game!");
+                    // delete the html code once the game has ended
+                    document.querySelector("div").remove();
                 };
                 if (computerScore === winningScore) {
-                    roundOutcome.textContent = "The computer won the game!"
-                    btns.forEach((bt) => bt.remove());
+                    alert("The computer has won the game!");
+                    document.querySelector("div").remove();
                 };
             });
         });
