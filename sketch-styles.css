@@ -5,13 +5,30 @@ body {
 
 .container {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     height: 100vh;
+    /* background-color: brown; */
     /* margin: 200px; */
+}
+
+.boxes {
+    display: flex;
+    flex-wrap: wrap;
+    /* allows this container to grow to fill up the rest of its space within the main container */
+    flex: 1 0 auto;
+    /* background-color: chartreuse; */
 }
 
 /* set each box to take up 6.25% (100/16) of the space of the cotainer they are in */
 .box {
     width: 6.25%;
     height: 6.25%;
+    /* background-color: teal; */
+}
+
+/* adding some padding to the button and its container */
+.btn,.btnBox {
+    padding: 10px;
+    align-self: center;
 }
