@@ -30,9 +30,9 @@
             }
         }
 
-        // declaring global variables for the human and computer's respective scores
-        let humanScore = 0;
-        let computerScore = 0;
+        // // declaring global variables for the human and computer's respective scores
+        // let humanScore = 0;
+        // let computerScore = 0;
 
         // writing a function for a single round of a game
         function playRound(humanChoice, computerChoice) {
@@ -51,29 +51,29 @@
             }
         }
 
-        // // executing the code to play a round of rock paper scissors by inputting each person's choice into the function
-        // playRound(getHumanChoice(), getComputerChoice());
+        // executing the code to play a round of rock paper scissors by inputting each person's choice into the function
+        playRound(getHumanChoice(), getComputerChoice());
 
-        // initializing the number of rounds to be played in the game
-        let rounds = 5
+        // // initializing the number of rounds to be played in the game
+        // let rounds = 5
 
-        // writing the function that plays the game for a specified amount of rounds
-        function playGame(numRounds) {
-            for (let i = 0; i < numRounds; i++) {
-                playRound(getHumanChoice(), getComputerChoice());
-            }
-            // printing out the result of the game
-            if (humanScore === computerScore) {
-                alert("Tie Game!")
-            } else if (humanScore > computerScore) {
-                alert("You won the game!")
-            } else {
-                alert("The computer has won the game!")
-            }
-        }
+        // // writing the function that plays the game for a specified amount of rounds
+        // function playGame(numRounds) {
+        //     for (let i = 0; i < numRounds; i++) {
+        //         playRound(getHumanChoice(), getComputerChoice());
+        //     }
+        //     // printing out the result of the game
+        //     if (humanScore === computerScore) {
+        //         alert("Tie Game!")
+        //     } else if (humanScore > computerScore) {
+        //         alert("You won the game!")
+        //     } else {
+        //         alert("The computer has won the game!")
+        //     }
+        // }
 
-        // executing the final function
-        playGame(rounds);
+        // // executing the final function
+        // playGame(rounds);
     </script>
 </body>
 </html>
