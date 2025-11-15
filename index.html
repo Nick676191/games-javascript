@@ -6,7 +6,24 @@
     <title>Rock, Paper, Scissors</title>
 </head>
 <body>
+    <div></div>
     <script>
+        // creating three buttons for the human's choice in the game
+        const container = document.querySelector("div");
+
+        const btnOne = document.createElement("button");
+        btnOne.textContent = "Rock";
+
+        const btnTwo = document.createElement("button");
+        btnTwo.textContent = "Paper";
+
+        const btnThree = document.createElement("button");
+        btnThree.textContent = "Scissors";
+
+        container.appendChild(btnOne);
+        container.appendChild(btnTwo);
+        container.appendChild(btnThree);
+
         // writing code to get the computer's choice for rock-paper-scissors
         let getComputerChoice = function() {
             // creating a random number between 0-2
@@ -51,8 +68,10 @@
             }
         }
 
-        // executing the code to play a round of rock paper scissors by inputting each person's choice into the function
-        playRound(getHumanChoice(), getComputerChoice());
+        // // executing the code to play a round of rock paper scissors by inputting each person's choice into the function
+        // playRound(getHumanChoice(), getComputerChoice());
+
+
 
         // // initializing the number of rounds to be played in the game
         // let rounds = 5
