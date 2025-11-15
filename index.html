@@ -37,15 +37,25 @@
             }
         }
 
-        // writing code to get the human's choice
-        function getHumanChoice() {
-            let choice = prompt("Rock, Paper, or Scissors?")
+        // // writing code to get the human's choice
+        // function getHumanChoice() {
+        //     let choice = prompt("Rock, Paper, or Scissors?")
+        //     if (choice === null) {
+        //         alert("You must choose one of the options")
+        //     } else {
+        //         return choice
+        //     }
+        // }
+
+        // rewriting the `getHumanChoice` function to work in the event listener for each of the buttons
+        function getHumanChoice(e) {
+            let choice = e.textContent;
             if (choice === null) {
                 alert("You must choose one of the options")
             } else {
                 return choice
-            }
-        }
+            };
+        };
 
         // // declaring global variables for the human and computer's respective scores
         // let humanScore = 0;
