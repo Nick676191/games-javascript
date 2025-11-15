@@ -46,27 +46,6 @@
         //     };
         // };
 
-        // declaring global variables for the human and computer's respective scores
-        let humanScore = 0;
-        let computerScore = 0;
-
-        // writing a function for a single round of a game
-        function playRound(humanChoice, computerChoice) {
-            const upperHuman = humanChoice.toUpperCase();
-            const upperComputer = computerChoice.toUpperCase(); 
-            if (upperHuman === upperComputer) {
-                console.log("Tie round!");
-            } else if (upperHuman === "ROCK" && upperComputer === "PAPER" || 
-            upperHuman === "PAPER" && upperComputer === "SCISSORS" ||
-            upperHuman === "SCISSORS" && upperComputer === "ROCK") {
-                console.log("The computer has won this round!");
-                computerScore += 1;
-            } else {
-                console.log("You have won this round!");
-                humanScore += 1;
-            }
-        }
-
         // // executing the code to play a round of rock paper scissors by inputting each person's choice into the function
         // playRound(getHumanChoice(), getComputerChoice());
 
@@ -116,6 +95,38 @@
         const scoreboard = document.createElement("div");
         container.appendChild(scoreboard);
 
+        const roundOutcome = document.createElement("p");
+        scoreboard.appendChild(roundOutcome);
+
+        const paraHumanScore = document.createElement("p");
+        scoreboard.appendChild(paraHumanScore);
+
+        const paraComputerScore = document.createElement("p");
+        scoreboard.appendChild(paraComputerScore);
+
+        // declaring global variables for the human and computer's respective scores
+        let humanScore = 0;
+        let computerScore = 0;
+
+        // writing a function for a single round of a game
+        function playRound(humanChoice, computerChoice) {
+            const upperHuman = humanChoice.toUpperCase();
+            const upperComputer = computerChoice.toUpperCase(); 
+            if (upperHuman === upperComputer) {
+                roundOutcome.textContent = "Tie round!";
+            } else if (upperHuman === "ROCK" && upperComputer === "PAPER" || 
+            upperHuman === "PAPER" && upperComputer === "SCISSORS" ||
+            upperHuman === "SCISSORS" && upperComputer === "ROCK") {
+                roundOutcome.textContent = "The computer has won this round!";
+                computerScore += 1;
+                paraComputerScore.textContent = "Computer Score: " + computerScore;
+            } else {
+                roundOutcome.textContent = "You have won this round!";
+                humanScore += 1;
+                paraHumanScore.textContent = "Your Score: " + humanScore
+            }
+        }
+    
         // going through each button and outputting the round outcome based on the button pressed
         btns.forEach((btn) => {
             btn.addEventListener("click", (e) => {
