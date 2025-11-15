@@ -6,3 +6,11 @@ for (let i = 0; i < 256; i++) {
     divGrid.className = "box";
     container.appendChild(divGrid);
 };
+
+
+const boxes = document.querySelectorAll(".box");
+boxes.forEach((box) => {
+    box.addEventListener("mouseenter", (event) => {
+        event.target.style.backgroundColor = "teal";
+    });
+});
