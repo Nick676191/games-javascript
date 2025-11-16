@@ -4,6 +4,14 @@ const boxContainer = document.createElement("div");
 boxContainer.className = "boxes";
 mainContainer.appendChild(boxContainer);
 
+// the rgb built in function uses a number between 0 and 255 to show the intensity of red, green, and blue to produce a color
+function colorRandomizer() {
+    const redNum = Math.floor(Math.random() * 256);
+    const greenNum = Math.floor(Math.random() * 256);
+    const blueNum = Math.floor(Math.random() * 256);
+    return "rgb(" + redNum + ", " + greenNum + ", " + blueNum + ")";
+};
+
 // function that fills up the boxes container will all of the square div elements 
 function gridCreator(n=16) {
     // creating n^2 boxes for the nxn grid of divs
@@ -16,7 +24,7 @@ function gridCreator(n=16) {
         divGrid.style.boxSizing = "border-box";
         divGrid.style.border = "0.25px solid black";
         divGrid.addEventListener("mouseenter", (event) => {
-            event.target.style.backgroundColor = "teal"
+            event.target.style.backgroundColor = colorRandomizer()
         });
         boxContainer.appendChild(divGrid);
     };
