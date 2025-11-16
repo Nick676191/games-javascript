@@ -8,6 +8,7 @@ body {
     flex-direction: column;
     flex-wrap: wrap;
     height: 100vh;
+    align-items: center;
     /* background-color: brown; */
     /* margin: 200px; */
 }
@@ -15,13 +16,17 @@ body {
 .boxes {
     display: flex;
     flex-wrap: wrap;
-    /* allows this container to grow to fill up the rest of its space within the main container */
-    flex: 1 0 auto;
+    /* allows this container to grow to fill up the rest of its space within the main container, great if we don't want the boxes to be exactly square
+    flex: 1 0 auto; */
+    /* creating a square grid within the main container in the center below the reset button */
+    width: 600px;
+    height: 600px;
+    /* adding a border */
+    border: 5px solid black;
     /* background-color: chartreuse; */
 }
 
 /* adding some padding to the button and its container */
 .btn,.btnBox {
     padding: 10px;
-    align-self: center;
 }

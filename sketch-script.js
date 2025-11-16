@@ -13,6 +13,8 @@ function gridCreator(n=16) {
         divGrid.className = "box";
         divGrid.style.width = divDims + "%";
         divGrid.style.height = divDims + "%";
+        divGrid.style.boxSizing = "border-box";
+        divGrid.style.border = "0.25px solid black";
         divGrid.addEventListener("mouseenter", (event) => {
             event.target.style.backgroundColor = "teal"
         });
@@ -28,9 +30,14 @@ const btnContainer = document.createElement("div");
 btnContainer.className = "btnBox";
 mainContainer.insertBefore(btnContainer, boxContainer);
 
+// creating the title of the page
+const head = document.createElement("h1");
+head.textContent = "Etch-a-Sketch";
+mainContainer.insertBefore(head, btnContainer);
+
 // creating the ability for the user to customize the grid boxes
 const inputBtn = document.createElement("button");
-inputBtn.textContent = "Change the Grid Size";
+inputBtn.textContent = "Reset Grid";
 inputBtn.className = "btn";
 btnContainer.appendChild(inputBtn);
 
