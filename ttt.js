@@ -11,7 +11,7 @@
 // start with an object that represents the gameboard. This object must contain an array that can be mutated so that we can change the display of the game
 const gameboard = (function createGameboard() {
     const board = document.querySelector("#board");
-    const gameboardArray = new Array(9);
+    const gameboardArray = new Array(9).fill("");
     
     // populating the gameboard
     for (let i = 0; i < gameboardArray.length; i++) {
@@ -25,12 +25,18 @@ const gameboard = (function createGameboard() {
         const divs = document.querySelectorAll(".box")
         divs.forEach((div) => {
             div.addEventListener("click", (e) => {
-                e.target.textContent = "X"
+                e.target.textContent = "X";
+                const index = Number(e.target.id);
+                gameboardArray[index] = "X";
             });
         });
     };
 
-    return {gameboardArray, changeBoardOne};
+    function showGameboard() {
+        console.log(gameboardArray);
+    }
+
+    return {gameboardArray, changeBoardOne, showGameboard};
 })();
 
 gameboard.changeBoardOne();
