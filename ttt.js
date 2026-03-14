@@ -21,22 +21,6 @@ const gameboard = (function createGameboard() {
         board.appendChild(newDiv);
     };
 
-    function changeBoardOne() { 
-        document.querySelectorAll(".box").forEach((div) => {
-            div.addEventListener("click", (e) => {
-                if (!e.target.classList.contains("filled")) {
-                    e.target.textContent = "X";
-                    e.target.classList.add("filled");
-                    const index = e.target.id;
-                    const indexNum = Number(index[index.length-1]);
-                    gameboardArray[indexNum] = "X";
-                } else {
-                    alert("Pick a box that hasn't been filled")
-                };
-            });
-        });
-    };
-
     function changeBoardRand() {
         function genRand(array) {
             const num = Math.floor(Math.random() * array.length);
@@ -55,14 +39,31 @@ const gameboard = (function createGameboard() {
         gameboardArray[index] = "O";
     };
 
-    function showGameboard() {
-        console.log(gameboardArray);
+    function playGame() { 
+        document.querySelectorAll(".box").forEach((div) => {
+            div.addEventListener("click", (e) => {
+                if (!e.target.classList.contains("filled")) {
+                    e.target.textContent = "X";
+                    e.target.classList.add("filled");
+                    const index = e.target.id;
+                    const indexNum = Number(index[index.length-1]);
+                    gameboardArray[indexNum] = "X";
+                    setTimeout(changeBoardRand, 2000);
+                } else {
+                    alert("Pick a box that hasn't been filled")
+                };
+            });
+        });
     };
 
-    return {changeBoardOne, changeBoardRand, showGameboard};
+    function showGameboard() {
+        return gameboardArray;
+    };
+
+    return {playGame, changeBoardRand, showGameboard};
 })();
 
-gameboard.changeBoardOne();
+gameboard.playGame();
 
 // then each player must be their own object where one player can represent x and the other represents o
 // function player() {
