@@ -16,27 +16,49 @@ const gameboard = (function createGameboard() {
     // populating the gameboard
     for (let i = 0; i < gameboardArray.length; i++) {
         const newDiv = document.createElement("div");
-        newDiv.id = i;
+        newDiv.id = "div" + i;
         newDiv.className = "box";
         board.appendChild(newDiv);
     };
 
-    function changeBoardOne() {
-        const divs = document.querySelectorAll(".box")
-        divs.forEach((div) => {
+    function changeBoardOne() { 
+        document.querySelectorAll(".box").forEach((div) => {
             div.addEventListener("click", (e) => {
-                e.target.textContent = "X";
-                const index = Number(e.target.id);
-                gameboardArray[index] = "X";
+                if (!e.target.classList.contains("filled")) {
+                    e.target.textContent = "X";
+                    e.target.classList.add("filled");
+                    const index = Number(e.target.id);
+                    gameboardArray[index] = "X";
+                } else {
+                    alert("Pick a box that hasn't been filled")
+                };
             });
         });
+    };
+
+    function changeBoardRand() {
+        function genRand(array) {
+            const num = Math.floor(Math.random() * array.length);
+            if (gameboardArray[num] === "") {
+                return num
+            } else {
+                return genRand(gameboardArray);
+            };
+        };
+
+        const index = genRand(gameboardArray);
+        const divLookup = "#div" + index;
+        const div = document.querySelector(divLookup);
+        div.textContent = "O";
+        div.classList.add("filled");
+        gameboardArray[index] = "O";
     };
 
     function showGameboard() {
         console.log(gameboardArray);
     }
 
-    return {gameboardArray, changeBoardOne, showGameboard};
+    return {gameboardArray, changeBoardOne, changeBoardRand, showGameboard};
 })();
 
 gameboard.changeBoardOne();
