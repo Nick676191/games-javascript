@@ -27,8 +27,9 @@ const gameboard = (function createGameboard() {
                 if (!e.target.classList.contains("filled")) {
                     e.target.textContent = "X";
                     e.target.classList.add("filled");
-                    const index = Number(e.target.id);
-                    gameboardArray[index] = "X";
+                    const index = e.target.id;
+                    const indexNum = Number(index[index.length-1]);
+                    gameboardArray[indexNum] = "X";
                 } else {
                     alert("Pick a box that hasn't been filled")
                 };
@@ -56,9 +57,9 @@ const gameboard = (function createGameboard() {
 
     function showGameboard() {
         console.log(gameboardArray);
-    }
+    };
 
-    return {gameboardArray, changeBoardOne, changeBoardRand, showGameboard};
+    return {changeBoardOne, changeBoardRand, showGameboard};
 })();
 
 gameboard.changeBoardOne();
