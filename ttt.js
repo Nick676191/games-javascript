@@ -17,6 +17,12 @@ const gameboard = (function createGameboard() {
         [3, 4, 5],
         [6, 7, 8]
     ];
+
+    const body = document.querySelector("body");
+    const turnShower = document.createElement("div");
+    turnShower.textContent = "Player's turn!";
+    turnShower.id = "turn";
+    body.appendChild(turnShower);
     
     // populating the gameboard
     for (let i = 0; i < gameboardArray.length; i++) {
@@ -24,28 +30,6 @@ const gameboard = (function createGameboard() {
         newDiv.id = "div" + i;
         newDiv.className = "box";
         board.appendChild(newDiv);
-    };
-
-    function showGameboard() {
-        return gameboardArray;
-    };
-
-    function changeBoardRand() {
-        function genRand(array) {
-            const num = Math.floor(Math.random() * array.length);
-            if (gameboardArray[num] === "") {
-                return num
-            } else {
-                return genRand(gameboardArray);
-            };
-        };
-
-        const index = genRand(gameboardArray);
-        const divLookup = "#div" + index;
-        const div = document.querySelector(divLookup);
-        div.textContent = "O";
-        div.classList.add("filled");
-        gameboardArray[index] = "O";
     };
 
     function userWon(element) {
@@ -83,12 +67,39 @@ const gameboard = (function createGameboard() {
         };
     };
 
-    function playGame() { 
+    function showGameboard() {
+        return gameboardArray;
+    };
+
+    function changeBoardRand() {
+        turnShower.textContent = "Player's turn!";
+        function genRand(array) {
+            const num = Math.floor(Math.random() * array.length);
+            if (gameboardArray[num] === "") {
+                return num
+            } else {
+                return genRand(gameboardArray);
+            };
+        };
+
+        const index = genRand(gameboardArray);
+        const divLookup = "#div" + index;
+        const div = document.querySelector(divLookup);
+        div.textContent = "O";
+        div.classList.add("filled");
+        gameboardArray[index] = "O";
+        if (checkGame(gameboardArray)) {
+            turnShower.textContent = "GAME OVER";
+        };
+    };
+
+    function playGame() {
         document.querySelectorAll(".box").forEach((div) => {
             div.addEventListener("click", (e) => {
                 if (checkGame(gameboardArray)) {
                     alert("Game Over. Please restart");
                 } else if (!e.target.classList.contains("filled")) {
+                    turnShower.textContent = "Robot's turn!";
                     e.target.textContent = "X";
                     e.target.classList.add("filled");
                     const index = e.target.id;
@@ -97,6 +108,9 @@ const gameboard = (function createGameboard() {
                     // giving the bot a turn after the user has made their play
                     if (!gameboardArray.every(isFilled) && !checkGame(gameboardArray)) {
                         setTimeout(changeBoardRand, 2000);
+                    };
+                    if (checkGame(gameboardArray)) {
+                        turnShower.textContent = "GAME OVER"
                     };
                 } else {
                     alert("Pick a box that hasn't been filled")
